@@ -51,9 +51,9 @@ app.get("/scrape", function(req, res) {
             title: title,
             link: link
         });
-      //result.title = $(this).children("a").text();
-      //result.link = $(this).children("a").attr("href");
-      //var entry = new Article(result);
+     // result.title = $(this).children("a").text();
+      //result.link = $(this).("a").attr("href");
+      var entry = new Article(result);
       // Now, save that entry to the db
     entry.save(function(err, doc) {
         // Log any errors
@@ -70,7 +70,7 @@ app.get("/scrape", function(req, res) {
   });
   // Tell the browser that we finished scraping the text
   res.send("Scrape Complete");
-// });
+ });
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
   Article.find({}, function(error, doc) {
